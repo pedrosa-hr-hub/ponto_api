@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.example.pontoapi.dto.PontoResponse;
 import com.example.pontoapi.model.Ponto;
 import com.example.pontoapi.repository.PontoRepository;
 
+@Service
 public class PontoService {
 
     @Autowired
