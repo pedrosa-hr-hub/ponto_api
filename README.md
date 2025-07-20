@@ -40,5 +40,7 @@ Gerencia as **rotas da API**. É o ponto de entrada para as requisições HTTP, 
 - SQL
 - Microsserviços
 - DTO
+- Kafka
+- Kafka UI
 
 ---
