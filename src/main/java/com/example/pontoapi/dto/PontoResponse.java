@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PontoResponse {
-    private Long id;
+    private Long NSR;
+    private String CPF;
+    private String PIS;
     private LocalDateTime horario;
 }
