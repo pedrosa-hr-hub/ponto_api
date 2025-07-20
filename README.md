@@ -2,7 +2,7 @@
 
 ## 💡 Ideia do Projeto
 
-O objetivo é estudar o funcionamento do **Spring Boot** por meio de um exemplo prático: criar uma API simples para envio de marcações de ponto, que serão armazenadas em um banco de dados.
+O objetivo é estudar o funcionamento do **Spring Boot** por meio de um exemplo prático: criar um microsserviço para marcações de ponto, que serão armazenadas em um banco de dados e farão parte do ecossistema Saas.
 
 ---
 
