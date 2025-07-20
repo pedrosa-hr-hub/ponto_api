@@ -18,7 +18,7 @@ public class PontoService {
 
     public PontoResponse registrar(PontoResponse dto) {
 
-        Ponto ponto = new Ponto(null, null, dto.getCPF(), dto.getPIS(), dto.getHorario());
+        Ponto ponto = new Ponto(null, null, dto.CPF(), dto.PIS(), dto.horario());
 
         Ponto salvo = pontoRepository.save(ponto);
 
