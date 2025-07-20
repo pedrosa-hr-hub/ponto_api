@@ -18,16 +18,16 @@ public class PontoService {
 
     public PontoResponse registrar(PontoResponse dto) {
 
-        Ponto ponto = new Ponto(null, dto.getHorario());
+        Ponto ponto = new Ponto(null, null, dto.getCPF(), dto.getPIS(), dto.getHorario());
 
         Ponto salvo = pontoRepository.save(ponto);
 
-        return new PontoResponse(salvo.getId(), salvo.getHorario());
+        return new PontoResponse(salvo.getNSR(), salvo.getCPF(), salvo.getPIS(), salvo.getHorario());
     }
 
     public List<PontoResponse> listarTodos() {
         return pontoRepository.findAll().stream()
-                .map(p -> new PontoResponse(p.getId(), p.getHorario()))
+                .map(p -> new PontoResponse(p.getNSR(), p.getCPF(), p.getPIS(), p.getHorario()))
                 .collect(Collectors.toList());
     }
 }
