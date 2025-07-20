@@ -2,7 +2,7 @@
 
 ## 💡 Ideia do Projeto
 
-O objetivo é estudar o funcionamento do **Spring Boot** por meio de um exemplo prático: criar um microsserviço para marcações de ponto, que serão armazenadas em um banco de dados e farão parte do ecossistema Saas.
+O objetivo é estudar o funcionamento do **Spring Boot** por meio de um exemplo prático: criar um microsserviço para marcações de ponto, que serão armazenadas em um banco de dados e integrarão um ecossistema **SaaS**.
 
 ---
 
@@ -14,25 +14,31 @@ Contém as classes que representam as entidades do sistema. Essas classes define
 
 ### 📁 Repository
 
-Camada responsável por realizar as operações de acesso ao banco de dados. Aqui são criadas as interfaces que estendem `JpaRepository` ou similares, facilitando o uso de CRUD e consultas personalizadas.
+Camada responsável por realizar as operações de acesso ao banco de dados. Aqui são definidas as interfaces que estendem `JpaRepository` (ou similares), facilitando a implementação de operações CRUD e consultas personalizadas.
 
 ### 📤 DTO (Data Transfer Object)
 
-Define os objetos que são trocados entre a API e o sistema. Os DTOs funcionam como uma camada de filtro, separando os dados recebidos pela requisição dos dados realmente salvos no banco — garantindo segurança e clareza na comunicação entre as camadas.
+Define os objetos transferidos entre a API e o sistema. Os DTOs atuam como uma camada de filtragem, separando os dados recebidos nas requisições daqueles que serão efetivamente persistidos no banco — garantindo segurança, controle e clareza na comunicação entre as camadas.
+
+### 🧠 Service
+
+Contém toda a **lógica de negócio** da aplicação. É responsável por processar os dados recebidos, aplicar regras específicas e interagir com as demais camadas, como o Repository.
+
+### 🌐 Controller
+
+Gerencia as **rotas da API**. É o ponto de entrada para as requisições HTTP, encaminhando-as para os serviços apropriados e retornando as respostas correspondentes ao cliente.
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+## 🚀 Tecnologias, Frameworks e Padrões Utilizados
 
 - Java 17+
 - Spring Boot
 - Spring Data JPA
-- Banco de Dados (ex: PostgreSQL)
-
----
-
-## 📄 Licença
-
-Projeto com fins educacionais.
+- PostgreSQL
+- Docker
+- SQL
+- Microsserviços
+- DTO
 
 ---
