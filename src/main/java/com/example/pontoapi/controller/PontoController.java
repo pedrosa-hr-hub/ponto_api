@@ -23,9 +23,16 @@ public class PontoController {
     @PostMapping
     public ResponseEntity<PontoResponse> registrarPonto(@RequestBody PontoResponse dto) {
 
-        PontoResponse salvo = pontoService.registrar(dto);
+        if (dto.CPF() == null || dto.CPF().isBlank()) {
 
-        return ResponseEntity.ok(salvo);
+            return ResponseEntity.badRequest().body(null);
+
+        } else {
+            PontoResponse salvo = pontoService.registrar(dto);
+
+            return ResponseEntity.ok(salvo);
+
+        }
     }
 
     @GetMapping
