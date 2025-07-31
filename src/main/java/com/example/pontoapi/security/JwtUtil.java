@@ -21,7 +21,7 @@ public class JwtUtil {
     }
 
     // Vê se o token está expirado
-    private boolean isTokenExpirado(String token) {
+    public boolean isTokenExpirado(String token) {
         try {
 
             final Date expiration = Jwts.parser()
