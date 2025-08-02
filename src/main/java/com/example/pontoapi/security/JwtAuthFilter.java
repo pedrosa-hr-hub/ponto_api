@@ -22,14 +22,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
         String authHeader = request.getHeader("Authorization");
 
-        if (authHeader != null && authHeader.startsWith("Bearer: ")) {
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
 
             String token = authHeader.substring(7);
 
-            if (!jwtUtil.isTokenExpirado(token)) {
-
+            if (jwtUtil.isTokenExpirado(token)) {
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-
                 return;
             }
 
