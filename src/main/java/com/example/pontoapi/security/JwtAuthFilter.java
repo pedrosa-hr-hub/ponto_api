@@ -1,8 +1,11 @@
 package com.example.pontoapi.security;
 
 import java.io.IOException;
+import java.util.Collections;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -17,6 +20,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
     @Autowired
     private JwtUtil jwtUtil;
 
+    @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
@@ -26,15 +30,26 @@ public class JwtAuthFilter extends OncePerRequestFilter {
 
             String token = authHeader.substring(7);
 
-            if (jwtUtil.isTokenExpirado(token)) {
+            if (!jwtUtil.isTokenExpirado(token)) {
+
+                String username = jwtUtil.extraiUsuario(token);
+
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(username, null,
+                        Collections.emptyList());
+
+                SecurityContextHolder.getContext().setAuthentication(auth);
+
+            } else {
+
                 response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                 return;
+
             }
 
         }
 
         filterChain.doFilter(request, response);
 
-    };
+    }
 
 }
