@@ -10,7 +10,7 @@ import lombok.Setter;
 
 @Entity
 @AllArgsConstructor
-public class User {
+public class Collaborator {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
